@@ -5,6 +5,10 @@ SELECT * FROM `user`;
 ALTER TABLE article
 	COLLATE='utf8mb4_general_ci',
 	CONVERT TO CHARSET utf8mb4;
+	
+ALTER TABLE `member`
+	COLLATE='utf8mb4_general_ci',
+	CONVERT TO CHARSET utf8mb4;
 
 # 전체 데이터베이스 리스팅
 SHOW DATABASES;
@@ -70,17 +74,18 @@ regDate DATETIME NOT NULL,
 loginId VARCHAR(100) NOT NULL,
 loginPw VARCHAR(100) NOT NULL,
 `name` VARCHAR(10) NOT NULL,
-age TINYINT NOT NULL,
-email VARCHAR(100) NOT NULL
+age INT(10) NOT NULL
 );
+DESC `member`;
 # 멤버 데이터 생성
-INSERT INTO article (regDate,loginId,loginPw,`name`,age,email) VALUES
-(NOW(),'id1','pw1'),
-(NOW(),'id2','pw2'),
-(NOW(),'id3','pw3'),
-(NOW(),'id4','pw4'),
-(NOW(),'id5','pw5');
+INSERT INTO `member` (regDate,loginId,loginPw,`name`,age) VALUES
+(NOW(),'id1','pw1','홍길동',23),
+(NOW(),'id2','pw2','김철수',24),
+(NOW(),'id3','pw3','김영희',25),
+(NOW(),'id4','pw4','아무개',26),
+(NOW(),'id5','pw5','로버트',27);
 
+SELECT * FROM `member`;
 
 # 제목1, 내용1 데이터 추가
 INSERT INTO article SET
