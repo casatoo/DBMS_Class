@@ -53,3 +53,19 @@
 - 2중 order by
     - order by 조건 1, 조건2  로 검색
     - order by 는 한번만 사용하고 (,) 로 구분한다.
+
+## 2022.11.17
+- 연산자
+- between 사잇값 검색
+- in 포함하는것 검색
+```sql
+select * from Products where Price between 20 and 50;
+select * from Customers where Country in ('Brazil','Spain','France');
+```
+
+- 문자열 포함 검색
+- LIKE
+```sql
+SELECT * FROM Customers WHERE CustomerName LIKE '%Store%';
+SELECT * FROM Customers WHERE CustomerName NOT LIKE '%Store%';
+```
