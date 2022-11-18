@@ -69,3 +69,60 @@ select * from Customers where Country in ('Brazil','Spain','France');
 SELECT * FROM Customers WHERE CustomerName LIKE '%Store%';
 SELECT * FROM Customers WHERE CustomerName NOT LIKE '%Store%';
 ```
+
+- 숫자 함수
+```sql
+select ProductID,ProductName from Products where Price = (select max(Price) from  Products);
+SELECT ROUND(AVG(Price), 2) AS avgPrice from Products;
+```
+
+- 날짜 함수
+```sql
+SELECT ADDDATE("2017-06-15", INTERVAL 2 YEAR);
+SELECT DATEDIFF("2017-06-25", "2017-06-15");
+SELECT * from Orders where OrderDate between  ADDDATE("1998-05-06", INTERVAL -100 DAY) and DATE("1998-05-06");
+SELECT ADDDATE(NOW(), INTERVAL 6 MONTH);
+```
+
+## 2022.11.18
+- select 문 작서 순서
+    1. select 컬럼명 
+    2. from 테이블명 
+    3. where 조건식 
+    4. group by 컬럼명 
+    5. having 조건식 
+    6. order by 컬럼명 desc
+- select 문 동작 순서
+    1. from (조회할 테이블)
+    2. on (조인 조건)
+    3. join (조인 테이블)
+    4. where (검색조건)
+    5. group by (그룹화)
+    6. cube | rollup ()
+    7. having (조건2)
+    8. select (검색된 테이블 컬럼)
+    9. distinct (중복허용)
+    10. order by (정렬기준)
+    11. top ()
+- 조건식
+```sql
+select * , if(Price > 50,'비쌈', '저렴') from Products;
+
+select *, case 
+when Price >= 50 then '비쌈'
+when Price >= 20 then '적정'
+else '저렴' end AS '비싼가?'
+from Products;
+```
+- 50보다 비싸면 비쌈 아니면 저렴으로 표시 
+- 조건이 3개 이상인 경우? case when 으로 조건나열 순차적으로 대입하기때문에 중복되는 조건은 다시 작성할 필요가 없다. 
+
+- 중복제거
+    - distinct
+```sql
+select distinct Country from Customers;
+select distinct CategoryID from Products order by CategoryID asc;
+```
+- group by having
+    - 그룹화 한 테이블에서의 조건은 where가 아닌 having 을 사용한다.
+    
