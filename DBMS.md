@@ -126,3 +126,54 @@ select distinct CategoryID from Products order by CategoryID asc;
 - group by having
     - 그룹화 한 테이블에서의 조건은 where가 아닌 having 을 사용한다.
     
+
+## 2022.11.22
+- 모델링
+
+
+
+- 지금있는 테이블
+    - member
+    - educationCourse id
+    - article
+        - 수정해야되는거
+            - member랑 조인하거나 불러올때 쓰던거 컬럼 수정
+            - 삭제시 status 값만 바꿔서 나중에 복원시킬 수 있도록 하는것.
+            - 불러올때 status 값 고려해서 가져오도록 하는것.
+    - board
+    - reaction
+    - comment
+        - q&A 는 답변을 관리자 또는 교관만 작성할 수 있도록
+    - attr
+    - 교육과정에 member가 포함되어야 함. 테이블 하나더 생성
+        - id,regdate,updatedate ,educationCourse id , member Id ,
+    - 기상정보를 담을 수 있는 테이블 ( weather)
+        - id
+        - 날짜
+        - 일출, 일몰
+        - 강수량
+        - 풍속
+    - drone
+        - id
+        - 이름
+        - 종
+        - 등록번호
+        - 신고일
+        - 제작일
+        - 소유자
+        - 안전성검사날짜
+        - 안전성검사만료일
+        - 보험가입일
+        - 보험종료일
+    - 비행기록
+        - id
+        - memberId
+        - 
+        
+- 아이디어
+    - 이 음식 대전에서 이정도면 비싸다! 싸다!
+    - 외식문화 발전과 함께 다양한 메뉴와 가격이 형성된 시장에서
+    - 내가 먹는 이 음식 또는 먹으려는 음식이 다른 음식점의 가격
+    - 평균가보다 얼마나 비싼지 또는 싼지 알려주는 앱
+    - 같은 메뉴라면 추천 음식점도 알려주고
+    - 
